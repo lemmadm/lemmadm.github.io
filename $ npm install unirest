@@ -1,0 +1,21 @@
+var unirest = require("unirest");
+
+var req = unirest("GET", "https://url-link-shortener.p.rapidapi.com/v1/domains");
+
+req.query({
+	"limit": "100",
+	"orderBy": "createdAt",
+	"orderDir": "desc"
+});
+
+req.headers({
+	"x-rapidapi-host": "url-link-shortener.p.rapidapi.com",
+	"x-rapidapi-key": "5c37e357e9mshda358fdceecee25p123ae3jsn2db259d31599"
+});
+
+
+req.end(function (res) {
+	if (res.error) throw new Error(res.error);
+
+	console.log(res.body);
+});
